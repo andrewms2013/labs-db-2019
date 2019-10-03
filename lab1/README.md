@@ -10,8 +10,13 @@
 
 ## Таблиці
 
-![Animal](table1.png)
-![Animal_Doctor](table2.png)
-![Client](table3.png)
-![Clinic](table4.png)
-![Doctor](table5.png)
+### Animals
+![Animals](table1.png)
+### Animals_Doctor
+![Animals_Doctors](table2.png)
+### Clients
+![Clients](table3.png)
+### Clinics
+![Clinics](table4.png)
+### Doctors
+![Doctors](table5.png)
