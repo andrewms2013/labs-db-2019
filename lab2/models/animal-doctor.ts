@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { DataSource } from "@app/data-source/data-source";
 
-enum AnimalDoctorFieldName {
+export enum AnimalDoctorFieldName {
     AnimalId = 'animal_id',
     DoctorId = 'doctor_id'
 }
@@ -41,7 +42,7 @@ export class AnimalDoctor {
         const query = `DELETE FROM public."Animal_Doctor" WHERE public."Animal_Doctor".${fieldName} = $1;`;
         const { rowCount } = await DataSource.getPool().query(query, [entityId]);
         if(!rowCount) {
-            throw new Error('No entities with such id found')
+            throw new Error('No entities with such id found');
         }
     }
 
@@ -50,7 +51,7 @@ export class AnimalDoctor {
                         WHERE public."Animal_Doctor".animal_id = $1, public."Animal_Doctor".doctor_id = $2;`;
         const { rowCount } = await DataSource.getPool().query(query, [animalId, doctorId]);
         if(!rowCount) {
-            throw new Error('No entities with such ids found')
+            throw new Error('No entities with such ids found');
         }
     }
 }

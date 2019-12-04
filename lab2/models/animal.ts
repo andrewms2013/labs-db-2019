@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { DataSource } from "@app/data-source/data-source";
 
 export class Animal {
@@ -5,8 +6,8 @@ export class Animal {
     constructor(
         public id: number,
         public birthdate: Date,
-        public name: String,
-        public animalPassportId: String,
+        public name: string,
+        public animalPassportId: string,
         public clientId: number,
     ) {}
 
@@ -17,6 +18,7 @@ export class Animal {
             throw Error('No entity with such id found');
         }
         const { id, birthdate, name, animal_passport_id, client_id } = rows[0];
+        console.log(birthdate);
         return new Animal(id, birthdate, name, animal_passport_id, client_id);
     }
 
@@ -29,7 +31,7 @@ export class Animal {
         });
     } 
 
-    public static async create(birthdate: Date, name: String, animalPassportId: String, clientId: number): Promise<Animal> {
+    public static async create(birthdate: Date, name: string, animalPassportId: string, clientId: number): Promise<Animal> {
         const query = `INSERT INTO public."Animal" (birthdate, name, animal_passport_id, client_id) 
                         VALUES ($1, $2, $3, $4) RETURNING id;`;
         const { rows } = await DataSource.getPool().query(query, [birthdate, name, animalPassportId, clientId]);
@@ -44,7 +46,7 @@ export class Animal {
         const { id, birthdate, name, animalPassportId, clientId } = animal;
         const { rowCount } = await DataSource.getPool().query(query, [id, birthdate, name, animalPassportId, clientId]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
 
@@ -53,7 +55,7 @@ export class Animal {
         const query = `DELETE FROM public."Animal" WHERE public."Client".id = $1;`;
         const { rowCount } = await DataSource.getPool().query(query, [id]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
 }

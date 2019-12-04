@@ -1,10 +1,10 @@
 import { config as configEnv } from 'dotenv';
-import "reflect-metadata";
-import { Client } from '@models/client';
+import { Controller } from '@controllers/controller';
 
 
 (async () => {
     configEnv();
     
-    await Client.create(true, 2, "John", 'Doe');
+    const controller = new Controller();
+    return controller.init();
 })();

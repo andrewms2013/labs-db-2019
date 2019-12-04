@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { DataSource } from "@app/data-source/data-source";
 
 export class Clinic {
     constructor(
         public id: number,
-        public city: String,
-        public house: String,
-        public street: String,
+        public city: string,
+        public house: string,
+        public street: string,
         public aviariesQuantity: number,
     ) {}
 
@@ -43,7 +44,7 @@ export class Clinic {
         const { id, city, house, street, aviariesQuantity } = clinic;
         const { rowCount } = await DataSource.getPool().query(query, [id, city, house, street, aviariesQuantity]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
 
@@ -51,7 +52,8 @@ export class Clinic {
         const query = `DELETE FROM public."Clinic" WHERE public."Clinic".id = $1;`;
         const { rowCount } = await DataSource.getPool().query(query, [id]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
+
 }

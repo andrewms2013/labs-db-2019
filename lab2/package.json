@@ -16,15 +16,15 @@
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
+    "moment": "^2.24.0",
     "path": "^0.12.7",
     "pg": "^7.14.0",
     "readline-sync": "^1.4.10",
-    "reflect-metadata": "^0.1.13",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^2.9.0",
+    "@typescript-eslint/parser": "^2.10.0",
     "tsconfig-paths": "^3.9.0"
   }
 }

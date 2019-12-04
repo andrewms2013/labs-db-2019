@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { DataSource } from "@app/data-source/data-source";
 
 export class Client {
@@ -6,8 +7,8 @@ export class Client {
         public id: number,
         public hasDiscount: boolean,
         public clinicId: number,
-        public name: String,
-        public surname: String,
+        public name: string,
+        public surname: string,
     ) {}
 
     public static async getById(entityId: number): Promise<Client> {
@@ -44,7 +45,7 @@ export class Client {
         const { id, hasDiscount, clinicId, name, surname } = client;
         const { rowCount } = await DataSource.getPool().query(query, [id, hasDiscount, clinicId, name, surname]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
 
@@ -53,7 +54,7 @@ export class Client {
         const query = `DELETE FROM public."Client" WHERE public."Client".id = $1;`;
         const { rowCount } = await DataSource.getPool().query(query, [id]);
         if(!rowCount) {
-            throw new Error('No entity with such id found')
+            throw new Error('No entity with such id found');
         }
     }
 }
