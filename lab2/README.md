@@ -33,3 +33,6 @@
 | _Відношення "**Animals_Doctors**"_ <br> Вміщує інформацію про те, які тварини лікуються у яких докторів | <span style="color:red">_animal_id_</span> — номер тварини<br> _doctor_id_ — номер доктора | Числовий <br> Числовий
 
 ## Робоча програма
+![Screen1](./screens/screen1.png)
+![Screen2](./screens/screen2.png)
+![Screen3](./screens/screen3.png)
