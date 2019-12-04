@@ -48,7 +48,7 @@ export class AnimalDoctor {
 
     public static async deleteOne(animalId: number, doctorId: number): Promise<void> {
         const query = `DELETE FROM public."Animal_Doctor" 
-                        WHERE public."Animal_Doctor".animal_id = $1, public."Animal_Doctor".doctor_id = $2;`;
+                        WHERE public."Animal_Doctor".animal_id = $1 AND public."Animal_Doctor".doctor_id = $2;`;
         const { rowCount } = await DataSource.getPool().query(query, [animalId, doctorId]);
         if(!rowCount) {
             throw new Error('No entities with such ids found');

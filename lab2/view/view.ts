@@ -30,6 +30,7 @@ export class View {
         console.log("2.See all connections for doctor");
         console.log("3.See all connections for animal");
         console.log("4.Create connection");
+        console.log("5.Delete connection");
     }
 
     public static readInteger(text: string): number {        

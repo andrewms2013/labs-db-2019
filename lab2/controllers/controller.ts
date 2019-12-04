@@ -235,19 +235,23 @@ export class Controller {
 
             switch(option) {
                 case 1: {
-                    View.printEntities([await Animal.delete(id)]);
+                    await Animal.delete(id);
+                    View.printLine("Success");
                     break;
                 }
                 case 2: {
-                    View.printEntities([await Client.delete(id)]);
+                    await Client.delete(id);
+                    View.printLine("Success");
                     break;
                 }
                 case 3: {
-                    View.printEntities([await Clinic.delete(id)]);
+                    await Clinic.delete(id);
+                    View.printLine("Success");
                     break;
                 }
                 case 4: {
-                    View.printEntities([await Doctor.delete(id)]);
+                    await Doctor.delete(id);
+                    View.printLine("Success");
                     break;
                 }
                 default: {
@@ -359,6 +363,13 @@ export class Controller {
                     const animalId = View.readInteger("Enter animal id: ");
                     const doctorId = View.readInteger("Enter doctor id: ");
                     View.printEntities([await AnimalDoctor.create(animalId, doctorId)]);
+                    break;
+                }
+                case 5: {
+                    const animalId = View.readInteger("Enter animal id: ");
+                    const doctorId = View.readInteger("Enter doctor id: ");
+                    await AnimalDoctor.deleteOne(animalId, doctorId);
+                    View.printLine("Success");
                     break;
                 }
                 default: {
