@@ -50,7 +50,7 @@
 ```sql
 CREATE INDEX IF NOT EXISTS hash_index ON "Animal" USING hash (name);
 
-CREATE INDEX IF NOT EXISTS invoice_num_index ON goods USING btree (invoice_num);
+CREATE INDEX IF NOT EXISTS aviaries_brin_index ON "Clinic" USING brin (aviaries_quantity);
 ``` 
 
 ### SQL запити
