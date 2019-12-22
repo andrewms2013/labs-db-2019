@@ -1,5 +1,14 @@
 
-# Лабораторна робота No 2. Ознайомлення з базовими операціями СУБД PostgreSQL
+# Лабораторна робота No 3. Засоби оптимізації роботи СУБД PostgreSQL
+
+
+## Варіант завданн
+
+15 варіант згідно номера залікової книжки
+
+| Види індексів | Умови для тригера    |
+|---------------|----------------------|
+| Hash, BRIN    | before delete, update|
 
 ## Предметна галузь
 
@@ -32,7 +41,27 @@
 | _Відношення "**Doctors**"_ <br> Вміщує інформацію про докторів, що працюють в клініці | <span style="color:red">_id_</span> — унікальний номер доктора<br> _clinic_id_ — номер клініки, в якій працює доктор <br> _name_ — ім'я доктора <br> _surname_ — призвище доктора<br> _speciality_ — спеціальність доктора <br> _qualification_ — кваліфікація доктора | Числовий <br> Числовий <br> Текстовий <br> Текстовий <br> Текстовий <br> Текстовий
 | _Відношення "**Animals_Doctors**"_ <br> Вміщує інформацію про те, які тварини лікуються у яких докторів | <span style="color:red">_animal_id_</span> — номер тварини<br> _doctor_id_ — номер доктора | Числовий <br> Числовий
 
-## Робоча програма
-![Screen1](./screens/screen1.png)
-![Screen2](./screens/screen2.png)
-![Screen3](./screens/screen3.png)
+
+
+## Завдання №2: команди створення індексів, тексти і час виконання запитів SQL
+
+### Команди SQL створення індексів
+
+```sql
+CREATE INDEX IF NOT EXISTS hash_index ON "Animal" USING hash (name);
+
+CREATE INDEX IF NOT EXISTS aviaries_brin_index ON "Clinic" USING brin (aviaries_quantity);
+``` 
+
+### SQL запити
+```sql
+SELECT * FROM goods WHERE invoice_num = 170;
+```
+
+![lab](img/ind_1.png)
+
+```sql
+Explain analyze select * from "Clinic" where aviaries_quantity > 30 and aviaries_quantity < 50
+```
+
+![lab](img/4.png)
