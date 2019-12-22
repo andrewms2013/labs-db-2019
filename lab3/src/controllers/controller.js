@@ -33,19 +33,7 @@ class Controller {
                     break;
                 }
                 case 6: {
-                    await this.parametrizedSearch();
-                    break;
-                }
-                case 7: {
-                    await this.performFullTextSearch();
-                    break;
-                }
-                case 8: {
                     await this.generateRandomEntity();
-                    break;
-                }
-                case 9: {
-                    await this.workWithManyToManyConnection();
                     break;
                 }
             }
@@ -63,15 +51,15 @@ class Controller {
                     break;
                 }
                 case 2: {
-                    View.printEntities(await Client.findAll());
+                    View.printEntities((await Client.findAll()).map(entity => entity.toJSON()));
                     break;
                 }
                 case 3: {
-                    View.printEntities(await Clinic.findAll());
+                    View.printEntities((await Clinic.findAll()).map(entity => entity.toJSON()));
                     break;
                 }
                 case 4: {
-                    View.printEntities(await Doctor.findAll());
+                    View.printEntities((await Doctor.findAll()).map(entity => entity.toJSON()));
                     break;
                 }
                 default: {
@@ -93,19 +81,19 @@ class Controller {
 
             switch (option) {
                 case 1: {
-                    View.printEntities([await Animal.findOne({where: {id: id}, include: [Doctor]})]);
+                    View.printEntities((await Animal.findOne({where: {id}})).toJSON());
                     break;
                 }
                 case 2: {
-                    View.printEntities([await Client.findOne({where: {id: id}})]);
+                    View.printEntities((await Client.findOne({where: {id}})).toJSON());
                     break;
                 }
                 case 3: {
-                    View.printEntities([await Clinic.findOne({where: {id: id}})]);
+                    View.printEntities((await Clinic.findOne({where: {id}})).toJSON());
                     break;
                 }
                 case 4: {
-                    View.printEntities([await Doctor.findOne({where: {id: id}, include: [Animal]})]);
+                    View.printEntities((await Doctor.findOne({where: {id}})).toJSON());
                     break;
                 }
                 default: {
@@ -130,7 +118,7 @@ class Controller {
                     const name = View.readString('Enter name of the animal: ');
                     const animalPassportId = View.readString('Enter passportId of the animal: ');
                     const clientId = View.readInteger('Enter id of the owner: ');
-                    View.printEntities([await Animal.create({birthdate, name, animalPassportId, clientId})]);
+                    View.printEntities((await Animal.create({birthdate, name, animalPassportId, clientId})).toJSON());
                     break;
                 }
                 case 2: {
@@ -138,7 +126,7 @@ class Controller {
                     const clinicId = View.readInteger('Enter clinic id of the client: ');
                     const name = View.readString('Enter name of the client: ');
                     const surname = View.readString('Enter surname of the client: ');
-                    View.printEntities([await Client.create({hasDiscount, clinicId, name, surname})]);
+                    View.printEntities((await Client.create({hasDiscount, clinicId, name, surname})).toJSON());
                     break;
                 }
                 case 3: {
@@ -146,7 +134,7 @@ class Controller {
                     const house = View.readString('Enter the house of the clinic: ');
                     const street = View.readString('Enter street of the clinic: ');
                     const aviariesQuantity = View.readInteger('Enter number of avaries in the clinic: ');
-                    View.printEntities([await Clinic.create({city, house, street, aviariesQuantity})]);
+                    View.printEntities((await Clinic.create({city, house, street, aviariesQuantity})).toJSON());
                     break;
                 }
                 case 4: {
@@ -155,7 +143,7 @@ class Controller {
                     const speciality = View.readString('Enter the speciality of the doctor: ');
                     const qualification = View.readString('Enter the speciality of the doctor: ');
                     const clinicId = View.readInteger('Enter id of the clinic associated with doctor: ');
-                    View.printEntities([await Doctor.create({name, surname, speciality, qualification, clinicId})]);
+                    View.printEntities((await Doctor.create({name, surname, speciality, qualification, clinicId})).toJSON());
                     break;
                 }
                 default: {
@@ -181,12 +169,12 @@ class Controller {
                     const name = View.readString('Enter name of the animal: ');
                     const animalPassportId = View.readString('Enter passportId of the animal: ');
                     const clientId = View.readInteger('Enter id of the owner: ');
-                    View.printEntities([await Animal.update({
+                    View.printEntities((await Animal.update({
                         birthdate,
                         name,
                         animalPassportId,
                         clientId
-                    }, {where: {id: id}})]);
+                    }, {where: {id}})).toJSON());
                     break;
                 }
                 case 2: {
@@ -194,12 +182,12 @@ class Controller {
                     const clinicId = View.readInteger('Enter clinic id of the client: ');
                     const name = View.readString('Enter name of the client: ');
                     const surname = View.readString('Enter surname of the client: ');
-                    View.printEntities([await Client.update({
+                    View.printEntities((await Client.update({
                         hasDiscount,
                         clinicId,
                         name,
                         surname
-                    }, {where: {id: id}})]);
+                    }, {where: {id}})).toJSON());
                     break;
                 }
                 case 3: {
@@ -207,12 +195,12 @@ class Controller {
                     const house = View.readString('Enter the house of the clinic: ');
                     const street = View.readString('Enter street of the clinic: ');
                     const aviariesQuantity = View.readInteger('Enter number of avaries in the clinic: ');
-                    View.printEntities([await Clinic.update({
+                    View.printEntities((await Clinic.update({
                         city,
                         house,
                         street,
                         aviariesQuantity
-                    }, {where: {id: id}})]);
+                    }, {where: {id}})).toJSON());
                     break;
                 }
                 case 4: {
@@ -221,13 +209,13 @@ class Controller {
                     const speciality = View.readString('Enter the speciality of the doctor: ');
                     const qualification = View.readString('Enter the speciality of the doctor: ');
                     const clinicId = View.readInteger('Enter id of the clinic associated with doctor: ');
-                    View.printEntities([await Doctor.update({
+                    View.printEntities((await Doctor.update({
                         name,
                         surname,
                         speciality,
                         qualification,
                         clinicId
-                    }, {where: {id: id}})]);
+                    }, {where: {id}})).toJSON());
                     break;
                 }
                 default: {
@@ -249,22 +237,22 @@ class Controller {
 
             switch (option) {
                 case 1: {
-                    await Animal.destroy({where: {id: id}});
+                    await Animal.destroy({where: {id}});
                     View.printLine("Success");
                     break;
                 }
                 case 2: {
-                    await Client.destroy({where: {id: id}});
+                    await Client.destroy({where: {id}});
                     View.printLine("Success");
                     break;
                 }
                 case 3: {
-                    await Clinic.destroy({where: {id: id}});
+                    await Clinic.destroy({where: {id}});
                     View.printLine("Success");
                     break;
                 }
                 case 4: {
-                    await Doctor.destroy({where: {id: id}});
+                    await Doctor.destroy({where: {id}});
                     View.printLine("Success");
                     break;
                 }
@@ -277,6 +265,13 @@ class Controller {
         }
 
         View.pressToReturn();
+
+    }
+
+    delay(ms) {
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, ms);
+        });
     }
 
     async generateRandomEntity() {
@@ -286,36 +281,44 @@ class Controller {
 
             switch (option) {
                 case 1: {
-                    const birthdate = this.generateRandomDate(new Date("2010-08-12"), new Date());
-                    const name = this.generateRandomString(10);
-                    const animalPassportId = this.generateRandomString(8);
-                    const clientId = null;
-                    View.printEntities([await Animal.create({birthdate, name, animalPassportId, clientId})]);
+                    for(let i = 0; i < 10000; i++) {
+                        const birthdate = new Date();
+                        const name = this.generateRandomString(10);
+                        const animalPassportId = this.generateRandomString(8);
+                        const clientId = null;
+                        View.printEntities((await Animal.create({birthdate, name, animalPassportId, clientId})).toJSON());
+                    }
                     break;
                 }
                 case 2: {
-                    const hasDiscount = this.generateRandomBoolean();
-                    const clinicId = null;
-                    const name = this.generateRandomString(10);
-                    const surname = this.generateRandomString(10);
-                    View.printEntities([await Client.create({hasDiscount, clinicId, name, surname})]);
+                    for(let i = 0; i < 10000; i++) {
+                        const hasDiscount = this.generateRandomBoolean();
+                        const clinicId = null;
+                        const name = this.generateRandomString(10);
+                        const surname = this.generateRandomString(10);
+                        View.printEntities((await Client.create({hasDiscount, clinicId, name, surname})).toJSON());
+                    }
                     break;
                 }
                 case 3: {
-                    const city = this.generateRandomString(10);
-                    const house = this.generateRandomString(10);
-                    const street = this.generateRandomString(10);
-                    const aviariesQuantity = this.generateRandomInteger(1000);
-                    View.printEntities([await Clinic.create({city, house, street, aviariesQuantity})]);
+                    for(let i = 0; i < 10000; i++) {
+                        const city = this.generateRandomString(10);
+                        const house = this.generateRandomString(10);
+                        const street = this.generateRandomString(10);
+                        const aviariesQuantity = i;
+                        View.printEntities((await Clinic.create({city, house, street, aviariesQuantity})).toJSON());
+                    }
                     break;
                 }
                 case 4: {
-                    const name = this.generateRandomString(10);
-                    const surname = this.generateRandomString(10);
-                    const speciality = this.generateRandomString(10);
-                    const qualification = this.generateRandomString(10);
-                    const clinicId = null;
-                    View.printEntities([await Doctor.create({name, surname, speciality, qualification, clinicId})]);
+                    for(let i = 0; i < 10000; i++) {
+                        const name = this.generateRandomString(10);
+                        const surname = this.generateRandomString(10);
+                        const speciality = this.generateRandomString(10);
+                        const qualification = this.generateRandomString(10);
+                        const clinicId = null;
+                        View.printEntities((await Doctor.create({name, surname, speciality, qualification, clinicId})).toJSON());
+                    }
                     break;
                 }
                 default: {

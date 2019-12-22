@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       aviariesQuantity: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         field: 'aviaries_quantity'
       }
     });

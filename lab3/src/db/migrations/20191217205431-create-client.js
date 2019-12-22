@@ -13,7 +13,7 @@ module.exports = {
         field: 'has_discount'
       },
       clinicId: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         field: 'clinic_id'
       },
       name: {

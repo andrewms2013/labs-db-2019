@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Client.associate = function(models) {
     Client.belongsTo(models.Clinic, {
-      foreignKey: 'client_id'
+      foreignKey: 'clinic_id'
     });
     Client.hasMany(models.Animal, {
       foreignKey: 'client_id'

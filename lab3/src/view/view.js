@@ -9,10 +9,7 @@ class View {
         console.log("3.Create entity");
         console.log("4.Update entity");
         console.log("5.Delete entity");
-        console.log("6.Search by parameters");
-        console.log("7.Full text search");
-        console.log("8.Generate random data");
-        console.log("9.Work with many to many connection");
+        console.log("6.Generate random data");
         console.log("0.Exit");
     }
 
@@ -24,19 +21,9 @@ class View {
         console.log("4.Doctor");
     }
 
-    static printManyToManyMenu() {
-        console.log("Choose an entity:");
-        console.log("1.See all connection");
-        console.log("2.See all connections for doctor");
-        console.log("3.See all connections for animal");
-        console.log("4.Create connection");
-        console.log("5.Delete connection");
-    }
-
     static readInteger(text) {        
         return parseInt(readlineSync.question(text));
     }
-
 
     static readFloat(text) {
         return parseFloat(readlineSync.question(text));

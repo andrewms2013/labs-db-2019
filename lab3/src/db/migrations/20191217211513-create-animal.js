@@ -12,11 +12,11 @@ module.exports = {
         type: Sequelize.DATE
       },
       clientId: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         field: 'client_id'
       },
       animalPassportId: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         field: 'animal_passport_id'
       },
       name: {

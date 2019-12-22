@@ -1,24 +1,22 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Animal_Doctor', {
+    return queryInterface.createTable('RemovedAnimal', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      animalId: {
-        type: Sequelize.INTEGER,
-        field: 'animal_id'
+      name: {
+        type: Sequelize.STRING
       },
-      doctorId: {
-        type: Sequelize.INTEGER,
-        field: 'doctor_id'
+      count: {
+        type: Sequelize.INTEGER
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Animal_Doctor');
+    return queryInterface.dropTable('RemovedAnimals');
   }
 };
