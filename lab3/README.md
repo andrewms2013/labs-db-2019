@@ -55,16 +55,16 @@ CREATE INDEX IF NOT EXISTS aviaries_brin_index ON "Clinic" USING brin (aviaries_
 
 ### SQL запити
 ```sql
-SELECT * FROM goods WHERE invoice_num = 170;
+Explain analyze select * from "Animal" where name = 'jqMJz695qx'
 ```
 
-![lab](img/ind_1.png)
+![lab](screens/hash_index.png)
 
 ```sql
 Explain analyze select * from "Clinic" where aviaries_quantity > 30 and aviaries_quantity < 50
 ```
 
-![lab](img/4.png)
+![lab](screens/brin_index.png)
 
 ## Завдання №3: команди, що ініціюють виконання тригера, текст тригера та скріншоти зі змінами у таблицях бази даних
 
