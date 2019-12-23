@@ -7,17 +7,14 @@ module.exports = {
           declare
               current_animal "RemovedAnimal"%rowtype;
           begin
-              if OLD is not null then
-                  for current_animal in SELECT * FROM "RemovedAnimal" loop
-                      if OLD.name = current_animal.name then
-                        UPDATE "RemovedAnimal" SET count = (current_animal.count+1) WHERE name = OLD.name;
-                        return OLD;
-                      end if;
-                  end loop;
-                  INSERT INTO "RemovedAnimal" (name, count) VALUES (OLD.name, 1);
-                  return OLD;
-              end if;
-              return null;
+              for current_animal in SELECT * FROM "RemovedAnimal" loop
+                  if OLD.name ilike '%' || current_animal.name || '%' then
+                    UPDATE "RemovedAnimal" SET count = current_animal.count+1 WHERE name = OLD.name;
+                    return OLD;
+                  end if;
+              end loop;
+              INSERT INTO "RemovedAnimal" (name, count) VALUES (OLD.name, 1);
+              return OLD;
           end;
         $$ language plpgsql;
         
