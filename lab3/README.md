@@ -73,4 +73,157 @@ Explain analyze select * from "Clinic" where aviaries_quantity > 30 and aviaries
 
 ### При видаленні тварини із бази даних, її ім'я заноситься в таблицю з видаленими тваринами
 
+## Завдання №4: скріншоти з ходом виконання запитів та їх результатів у обох транзакціях по кожному рівню ізоляції
 
+### READ COMMITTED
+
+<table>
+    <tr>
+        <td>Transction #1</td>
+        <td>Transction #2</td>
+    </tr>
+    <tr>
+        <td>
+            <pre lang="sql">
+-- #1
+BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SELECT name FROM "Doctor" WHERE id = 6;
+-- #2
+<br>
+<br>
+-- #3
+SELECT name FROM "Doctor" WHERE id = 6;
+-- #4
+<br>
+-- #5
+SELECT name FROM "Doctor" WHERE id = 6;
+            </pre>
+        </td>
+        <td>
+            <pre lang="sql">
+-- #1
+<br>
+<br>
+-- #2
+BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATE "Doctor" SET name = 'Bogdan' WHERE id = 6;
+-- #3
+<br>
+-- #4
+COMMIT;
+<br>
+<br>
+            </pre>
+        </td>
+    </tr>
+</table>
+
+| Transaction #1      | Transaction #2      |
+|---------------------|---------------------|
+| ![lab](img/rc3.png) |                     |
+|                     | ![lab](img/rc4.png) |
+| ![lab](img/rc5.png) |                     |
+|                     | ![lab](img/rc6.png) |
+| ![lab](img/rc7.png) |                     |
+
+### REPEATABLE READ
+
+<table>
+    <tr>
+        <td>Transction #1</td>
+        <td>Transction #2</td>
+    </tr>
+    <tr>
+        <td>
+            <pre lang="sql">
+-- #1
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SELECT name FROM "Doctor" WHERE id = 6;
+-- #2
+<br>
+<br>
+<br>
+-- #3
+SELECT name FROM "Doctor" WHERE id = 6;
+-- #4
+COMMIT;
+SELECT name FROM "Doctor" WHERE id = 6;
+            </pre>
+        </td>
+        <td>
+            <pre lang="sql">
+-- #1
+<br>
+<br>
+-- #2
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+UPDATE "Doctor" SET name = 'Andrii' WHERE id = 6;
+COMMIT;
+-- #3
+<br>
+-- #4
+<br>
+<br>
+            </pre>
+        </td>
+    </tr>
+</table>
+
+| Transaction #1      | Transaction #2      |
+|---------------------|---------------------|
+| ![lab](img/rr1.png) |                     |
+|                     | ![lab](img/rr2.png) |
+| ![lab](img/rr3.png) |                     |
+| ![lab](img/rr4.png) |                     |
+
+### SERIALIZABLE
+
+<table>
+    <tr>
+        <td>Transction #1</td>
+        <td>Transction #2</td>
+    </tr>
+    <tr>
+        <td>
+            <pre lang="sql">
+-- #1
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+SELECT COUNT(*) FROM "Doctor";
+-- #2
+<br>
+<br>
+<br>
+<br>
+-- #3
+SELECT COUNT(*) FROM "Doctor";
+-- #4
+COMMIT;
+SELECT COUNT(*) FROM "Doctor";
+            </pre>
+        </td>
+        <td>
+            <pre lang="sql">
+-- #1
+<br>
+<br>
+-- #2
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+INSERT INTO "Doctor" (name, surname, speciality, qualification, 
+	clinic_id) VALUES ('Ihor', 'Vens', 'Surgeon', 'Master', null);
+COMMIT;
+-- #3
+<br>
+-- #4
+<br>
+<br>
+            </pre>
+        </td>
+    </tr>
+</table>
+
+| Transaction #1      | Transaction #2      |
+|---------------------|---------------------|
+| ![lab](img/s1.png)  |                     |
+|                     | ![lab](img/s2.png)  |
+| ![lab](img/s3.png)  |                     |
+| ![lab](img/s5.png)  |                     |
