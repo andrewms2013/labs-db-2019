@@ -125,11 +125,11 @@ COMMIT;
 
 | Transaction #1      | Transaction #2      |
 |---------------------|---------------------|
-| ![lab](img/rc3.png) |                     |
-|                     | ![lab](img/rc4.png) |
-| ![lab](img/rc5.png) |                     |
-|                     | ![lab](img/rc6.png) |
-| ![lab](img/rc7.png) |                     |
+| ![lab](screens/rc1.png) |                     |
+|                     | ![lab](screens/rc2.png) |
+| ![lab](screens/rc3.png) |                     |
+|                     | ![lab](screens/rc4.png) |
+| ![lab](screens/rc5.png) |                     |
 
 ### REPEATABLE READ
 
