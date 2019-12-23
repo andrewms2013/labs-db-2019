@@ -176,10 +176,10 @@ COMMIT;
 
 | Transaction #1      | Transaction #2      |
 |---------------------|---------------------|
-| ![lab](img/rr1.png) |                     |
-|                     | ![lab](img/rr2.png) |
-| ![lab](img/rr3.png) |                     |
-| ![lab](img/rr4.png) |                     |
+| ![lab](screens/rr1.png) |                     |
+|                     | ![lab](screens/rr2.png) |
+| ![lab](screens/rr3.png) |                     |
+| ![lab](screens/rr4.png) |                     |
 
 ### SERIALIZABLE
 
@@ -228,7 +228,7 @@ COMMIT;
 
 | Transaction #1      | Transaction #2      |
 |---------------------|---------------------|
-| ![lab](img/s1.png)  |                     |
-|                     | ![lab](img/s2.png)  |
-| ![lab](img/s3.png)  |                     |
-| ![lab](img/s5.png)  |                     |
+| ![lab](screens/sz1.png)  |                     |
+|                     | ![lab](screens/sz2.png)  |
+| ![lab](screens/sz3.png)  |                     |
+| ![lab](screens/sz4.png)  |                     |
