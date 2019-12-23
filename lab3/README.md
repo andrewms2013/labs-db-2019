@@ -74,9 +74,9 @@ Explain analyze select * from "Clinic" where aviaries_quantity > 30 and aviaries
 
 ### При видаленні тварини із бази даних, її ім'я заноситься в таблицю з видаленими тваринами
 
-![lab](screens/Animals.png)
-![lab](screens/Removing.png)
-![lab](screens/RemovedAnimal.png)
+![lab](screens/Animals.png)  
+![lab](screens/Removing.png)  
+![lab](screens/RemovedAnimal.png)  
 
 ## Завдання №4: скріншоти з ходом виконання запитів та їх результатів у обох транзакціях по кожному рівню ізоляції
 
