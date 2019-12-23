@@ -87,16 +87,16 @@ Explain analyze select * from "Clinic" where aviaries_quantity > 30 and aviaries
             <pre lang="sql">
 -- #1
 BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
 -- #2
 <br>
 <br>
 -- #3
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
 -- #4
 <br>
 -- #5
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
             </pre>
         </td>
         <td>
@@ -106,7 +106,7 @@ SELECT shipping_cost FROM invoices WHERE num = 1;
 <br>
 -- #2
 BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
-UPDATE invoices SET shipping_cost = 101.12 WHERE num = 1;
+UPDATE "Doctor" SET name = 'Bogdan' WHERE id = 6;
 -- #3
 <br>
 -- #4
