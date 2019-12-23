@@ -138,16 +138,16 @@ COMMIT;
             <pre lang="sql">
 -- #1
 BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
 -- #2
 <br>
 <br>
 <br>
 -- #3
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
 -- #4
 COMMIT;
-SELECT shipping_cost FROM invoices WHERE num = 1;
+SELECT name FROM "Doctor" WHERE id = 6;
             </pre>
         </td>
         <td>
@@ -157,7 +157,7 @@ SELECT shipping_cost FROM invoices WHERE num = 1;
 <br>
 -- #2
 BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-UPDATE invoices SET shipping_cost = 101.12 WHERE num = 1;
+UPDATE "Doctor" SET name = 'Andrii' WHERE id = 6;
 COMMIT;
 -- #3
 <br>
