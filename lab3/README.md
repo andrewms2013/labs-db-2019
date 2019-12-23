@@ -188,17 +188,17 @@ COMMIT;
             <pre lang="sql">
 -- #1
 BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-SELECT COUNT(*) FROM invoices;
+SELECT COUNT(*) FROM "Doctor";
 -- #2
 <br>
 <br>
 <br>
 <br>
 -- #3
-SELECT COUNT(*) FROM invoices;
+SELECT COUNT(*) FROM "Doctor";
 -- #4
 COMMIT;
-SELECT COUNT(*) FROM invoices;
+SELECT COUNT(*) FROM "Doctor";
             </pre>
         </td>
         <td>
@@ -208,8 +208,8 @@ SELECT COUNT(*) FROM invoices;
 <br>
 -- #2
 BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-INSERT INTO invoices (date_departure, shipping_cost, sender_ipn, recipient_ipn, 
-	warehouse_dep_num, warehouse_arr_num) VALUES ('2019-02-01', 100, 1006926, 1216603, 3, 1);
+INSERT INTO "Doctor" (name, surname, speciality, qualification, 
+	clinic_id) VALUES ('Ihor', 'Vens', 'Surgeon', 'Master', null);
 COMMIT;
 -- #3
 <br>
